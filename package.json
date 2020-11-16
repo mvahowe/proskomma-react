@@ -3,18 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.1",
+    "@babel/preset-env": "^7.12.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "react-scripts": "4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node_modules/babel-tape-runner/bin/babel-tape-runner test/code/*.js | node_modules/tap-summary/bin/cmd.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +30,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/register": "^7.12.1",
+    "babel-tape-runner": "^3.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "react": "^17.0.1",
+    "tap-summary": "^4.0.0",
+    "tape": "^5.0.1"
   }
 }
