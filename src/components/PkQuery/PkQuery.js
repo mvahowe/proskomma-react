@@ -16,13 +16,14 @@ class PkQuery extends Component {
             ret.results[queryName] = await this.runQuery(this.substitutedQuery(queryTemplate));
         }
         const failedQueries = Object.entries(ret.results).filter(r => r[1].errors).map(kv => kv[0]);
+        const nTemplates = Object.keys(this.props.queryTemplates).length;
         const nFailed = failedQueries.length;
         const failedKeys = failedQueries.join(", ");
         ret.component.success = (failedQueries.length === 0);
         ret.component.message = (
             ret.component.success ?
-                `${this.props.queryTemplates.length} Quer${this.props.queryTemplates.length === 1 ? "y" : "ies"} succeeded` :
-                `${nFailed}/${this.props.queryTemplates.length} Quer${nFailed === 1 ? "y" : "ies"} failed (${failedKeys})`);
+                `${nTemplates} Quer${nTemplates === 1 ? "y" : "ies"} succeeded` :
+                `${nFailed}/${nTemplates} Quer${nFailed === 1 ? "y" : "ies"} failed (${failedKeys})`);
         ret.component.queryTime = Date.now() - startTime;
         return ret;
     }
@@ -39,16 +40,19 @@ class PkQuery extends Component {
         return await this.props.pk.gqlQuery(query);
     }
 
+    async componentDidMount() {
+        const results = await this.runQueries();
+        this.setState({queryOutput: results});
+    }
+
     render() {
-        const results = Promise.resolve(this.runQueries());
-        this.setState({queryOutput: {results: results}});
-        const displayClass = this.props.displayClass;
+        const DisplayClass = this.props.displayClass;
         return (
-            <displayClass>
+            <DisplayClass
                 queryOutput = {this.state.queryOutput}
                 showRawResults = {this.props.showRawResults}
                 showTime = {this.props.showTime}
-            </displayClass>
+            />
         );
     }
 }

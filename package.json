@@ -7,7 +7,7 @@
     "proskomma": "^0.1.20",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
-    "xregexp": "^4.4.0"
+    "xregexp": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

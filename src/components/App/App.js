@@ -11,12 +11,12 @@ function App(props) {
                 </p>
             </header>
             <PkQuery
-                pk={new props.ProsKomma()}
+                pk={props.pk}
                 queryTemplates={{main: '{ processor packageVersion}'}}
-                inputValue ={{}}
+                inputValues={{}}
                 displayClass={PkDisplay}
-                showRawResults="true"
-                showTime="true"
+                showRawResults={true}
+                showTime={true}
             />
         </div>
     );
