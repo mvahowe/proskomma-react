@@ -5,16 +5,12 @@ import PkDisplay from '../PkDisplay/PkDisplay';
 function App(props) {
     return (
         <div className="App">
-            <header className="App-header">
-                <p>
-                    Hello Proskomma-React
-                </p>
-            </header>
             <PkQuery
                 pk={props.pk}
-                queryTemplates={{main: '{ processor packageVersion}'}}
-                inputValues={{}}
+                queryTemplates={{main: '{ processor packageVersion documents { sequences { blocks(withScopes:["chapter/%chapter%"]) { text } } } }'}}
+                inputValues={{chapter: "2"}}
                 displayClass={PkDisplay}
+                showQuery={true}
                 showRawResults={true}
                 showTime={true}
             />

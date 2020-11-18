@@ -2,25 +2,18 @@ import React, {Component} from 'react';
 
 class PkDisplay extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-    header() {
-        // Override this in subclass
-        return <header className="PkDisplay-header">PkDisplay Default Header</header>;
-    }
-
     content() {
         // Override this in subclass
-        return <div className="PkDisplay-content">PkDisplay Default Content</div>
+        return <div className="PkDisplay-content">
+            <pre>PkDisplay Default Content</pre>
+        </div>
     }
 
     message() {
         // Override to take control of the message logic (but please handle failures)
         if (!this.ready()) {
             return this.loadingMessage();
-        }else if ("success" in this.props.queryOutput.component && !this.props.queryOutput.component.success) {
+        } else if ("success" in this.props.queryOutput.component && !this.props.queryOutput.component.success) {
             return this.failMessage();
         } else {
             return this.successMessage();
@@ -33,12 +26,16 @@ class PkDisplay extends Component {
 
     failMessage() {
         // Override to change output on fail (but please handle failures)
-        return <div className="PkDisplay-componentMessage">{this.props.queryOutput.component.message}</div>;
+        return <div className="PkDisplay-componentMessage">
+            <pre>{this.props.queryOutput.component.message}</pre>
+        </div>;
     }
 
     loadingMessage() {
         // Override to change output while waiting for a query response
-        return <div className="PkDisplay-componentMessage">Loading...</div>;
+        return <div className="PkDisplay-componentMessage">
+            <pre>Loading...</pre>
+        </div>;
     }
 
     successMessage() {
@@ -49,12 +46,20 @@ class PkDisplay extends Component {
     render() {
         return (
             <div className="PkDisplay">
-                {this.header()}
                 {this.content()}
                 {this.message()}
                 {
+                    (this.ready() && this.props.showQuery) ?
+                        <div className="PkDisplay-queries">
+                            {<pre>{JSON.stringify(this.props.queryOutput.queries, null, 2)}</pre>}
+                        </div> :
+                        ""
+                }
+                {
                     (this.ready() && this.props.showTime) ?
-                        <div className="PkDisplay-queryTime">Query Output in {this.props.queryOutput.component.queryTime} msec</div> :
+                        <div className="PkDisplay-queryTime">
+                            <pre>Query Output in {this.props.queryOutput.component.queryTime} msec</pre>
+                        </div> :
                         ""
                 }
                 {

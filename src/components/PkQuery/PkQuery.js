@@ -11,9 +11,10 @@ class PkQuery extends Component {
 
     async runQueries() {
         const startTime = Date.now();
-        const ret = {results: {}, component: {}};
+        const ret = {queries: {}, results: {}, component: {}};
         for (let [queryName, queryTemplate] of Object.entries(this.props.queryTemplates)) {
-            ret.results[queryName] = await this.runQuery(this.substitutedQuery(queryTemplate));
+            ret.queries[queryName] = this.substitutedQuery(queryTemplate);
+            ret.results[queryName] = await this.runQuery(ret.queries[queryName]);
         }
         const failedQueries = Object.entries(ret.results).filter(r => r[1].errors).map(kv => kv[0]);
         const nTemplates = Object.keys(this.props.queryTemplates).length;
@@ -29,8 +30,12 @@ class PkQuery extends Component {
     }
 
     substitutedQuery(template) {
+        const graphqlSpecialChars = new RegExp("[\"()\\[\\]{|}]");
         let ret = template;
         for (const [k, v] of Object.entries(this.props.inputValues)) {
+            if (!k.startsWith("_scary") && graphqlSpecialChars.test(v)) {
+                continue;
+            }
             ret = ret.replace(new RegExp(`%${k}%`, "g"), v);
         }
         return ret;
@@ -50,6 +55,7 @@ class PkQuery extends Component {
         return (
             <DisplayClass
                 queryOutput = {this.state.queryOutput}
+                showQuery = {this.props.showQuery}
                 showRawResults = {this.props.showRawResults}
                 showTime = {this.props.showTime}
             />
