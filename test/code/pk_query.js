@@ -3,43 +3,44 @@ import test from 'tape';
 import reactDom from 'react-dom/server';
 import dom from 'cheerio';
 import PkDisplay from '../../src/components/PkDisplay/PkDisplay';
+import PkQuery from "../../src/components/PkQuery/PkQuery";
+
+import titUsfm from '../../src/test_data/en_aligned_tit.usfm';
+import {ProsKomma} from 'proskomma';
+
+const pk = new ProsKomma();
+
+pk.importDocument(
+    {lang: "fra", abbr: "hello"},
+    "usfm",
+    titUsfm);
 
 const render = reactDom.renderToStaticMarkup;
 
-test('PkDisplay', t => {
-    t.plan(8);
-    const makeDisplay = flag => <PkDisplay
-        queryOutput={{
-            component: {
-                success: flag,
-                message: "Here's a message",
-                queryTime: 23
-            },
-            results: {
-                main: {
-                    "data": {
-                        "documents": [{
-                            "headers": [{
-                                "key": "id",
-                                "value": "MRK Mark's Gospel, translated by Mark"
-                            }]
-                        }]
-                    }
-                }
-            }
-        }}
-        showRawResults={flag}
-        showTime={flag}
+test('PkQuery', t => {
+    t.plan(1);
+    const makeQuery = (chapter) => <PkQuery
+        pk={pk}
+        queryTemplates={{main: '{ processor packageVersion\n' +
+                '    documents {\n' +
+                '      sequences {\n' +
+                '        blocks(withScopes:["chapter/%chapter%"]) {\n' +
+                '          text(normalizeSpace:true)\n' +
+                '        }\n' +
+                '      }\n' +
+                '    }\n' +
+                '  }\n'}}
+        inputValues={{chapter: chapter}}
+        displayClass={PkDisplay}
+        showQuery={true}
+        showRawResults={true}
+        showTime={true}
     />;
-    const $ = dom.load(render(makeDisplay(true)));
+    new Promise(resolve => setTimeout(resolve, 2000)).then();
+    const rendered = render(makeQuery("2"));
+    new Promise(resolve => setTimeout(resolve, 2000)).then();
+    const $ = dom.load(rendered);
+    console.log($.html());
     t.ok($('.PkDisplay-content').html());
-    t.false($('.PkDisplay-componentMessage').html());
-    t.ok($('.PkDisplay-queryTime').html());
-    t.ok($('.PkDisplay-queryResults').html());
-    let $2 = dom.load(render(makeDisplay(false)));
-    t.ok($2('.PkDisplay-content').html());
-    t.ok($2('.PkDisplay-componentMessage').html());
-    t.false($2('.PkDisplay-queryTime').html());
-    t.false($2('.PkDisplay-queryResults').html());
 });
 
