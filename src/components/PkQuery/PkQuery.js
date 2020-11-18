@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 class PkQuery extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             queryOutput: {}
         }
@@ -32,7 +32,7 @@ class PkQuery extends Component {
     substitutedQuery(template) {
         const graphqlSpecialChars = new RegExp("[\"()\\[\\]{|}]");
         let ret = template;
-        for (const [k, v] of Object.entries(this.props.inputValues)) {
+        for (const [k, v] of Object.entries(this.props.fieldValues)) {
             if (!k.startsWith("_scary") && graphqlSpecialChars.test(v)) {
                 continue;
             }
@@ -50,17 +50,29 @@ class PkQuery extends Component {
         this.setState({queryOutput: results});
     }
 
+    async componentDidUpdate(prevProps, prevState) {
+        if (prevProps.formUpdate !== this.props.formUpdate) {
+            const results = await this.runQueries();
+            this.setState({queryOutput: results});
+        }
+    }
+
     render() {
         const DisplayClass = this.props.displayClass;
-        return (
-            <DisplayClass
-                queryOutput = {this.state.queryOutput}
-                showQuery = {this.props.showQuery}
-                showRawResults = {this.props.showRawResults}
-                showTime = {this.props.showTime}
-            />
-        );
+        if (this.props.fieldValues) {
+            return (<DisplayClass
+                    queryOutput={this.state.queryOutput}
+                    formUpdate={this.props.formUpdate}
+                    showQuery={this.props.showQuery}
+                    showRawResults={this.props.showRawResults}
+                    showTime={this.props.showTime}
+                />
+            );
+        } else {
+            return (<div>Loading...</div>)
+        }
     }
+
 }
 
 export default PkQuery;
