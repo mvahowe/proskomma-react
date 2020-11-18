@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import deepEqual from 'deep-equal';
 
 class PkQuery extends Component {
 
@@ -51,7 +52,7 @@ class PkQuery extends Component {
     }
 
     async componentDidUpdate(prevProps, prevState) {
-        if (prevProps.formUpdate !== this.props.formUpdate) {
+        if (!deepEqual(prevProps.fieldValues, this.props.fieldValues)) {
             const results = await this.runQueries();
             this.setState({queryOutput: results});
         }
@@ -62,7 +63,6 @@ class PkQuery extends Component {
         if (this.props.fieldValues) {
             return (<DisplayClass
                     queryOutput={this.state.queryOutput}
-                    formUpdate={this.props.formUpdate}
                     showQuery={this.props.showQuery}
                     showRawResults={this.props.showRawResults}
                     showTime={this.props.showTime}

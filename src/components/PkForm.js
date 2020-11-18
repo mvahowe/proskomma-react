@@ -5,7 +5,6 @@ class PkForm extends Component {
     handleChange(event, field) {
         if (event) {
             this.props.setFieldValue(field, event.target.value);
-            this.props.setFormUpdate();
         }
     }
 

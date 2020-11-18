@@ -20,12 +20,6 @@ class App extends Component {
         }
     }
 
-    setFormUpdate() {
-        if (this.state) {
-            this.setState({formUpdate: Date.now()});
-        }
-    }
-
     render() {
         return (
             <div className="App">
@@ -37,7 +31,6 @@ class App extends Component {
                     inputFields={this.props.inputFields}
                     fieldValues={this.state.fieldValues}
                     setFieldValue={(k, v) => this.setFieldValue(k, v)}
-                    setFormUpdate={() => this.setFormUpdate()}
                 />
                 <PkQuery
                     pk={this.props.pk}
@@ -55,7 +48,6 @@ class App extends Component {
                             '  }\n'
                     }}
                     fieldValues={this.state.fieldValues}
-                    formUpdate={this.state.formUpdate}
                     displayClass={PkDisplay}
                     showQuery={true}
                     showRawResults={true}
