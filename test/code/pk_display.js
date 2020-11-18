@@ -2,7 +2,7 @@ import React from 'react';
 import test from 'tape';
 import reactDom from 'react-dom/server';
 import dom from 'cheerio';
-import PkDisplay from '../../src/components/PkDisplay/PkDisplay';
+import PkDisplay from '../../src/components/PkDisplay';
 
 const render = reactDom.renderToStaticMarkup;
 

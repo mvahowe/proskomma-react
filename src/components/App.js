@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
-import PkForm from '../PkForm/PkForm';
-import PkQuery from '../PkQuery/PkQuery';
-import PkDisplay from '../PkDisplay/PkDisplay';
+import PkForm from './PkForm';
+import PkQuery from './PkQuery';
+import PkDisplay from './PkDisplay';
 
 class App extends Component {
 

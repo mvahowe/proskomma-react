@@ -2,8 +2,8 @@ import React from 'react';
 import test from 'tape';
 import reactDom from 'react-dom/server';
 import dom from 'cheerio';
-import PkDisplay from '../../src/components/PkDisplay/PkDisplay';
-import PkQuery from "../../src/components/PkQuery/PkQuery";
+import PkDisplay from '../../src/components/PkDisplay';
+import PkQuery from "../../src/components/PkQuery";
 
 import titUsfm from '../../src/test_data/en_aligned_tit.usfm';
 import {ProsKomma} from 'proskomma';
