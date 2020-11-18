@@ -7,7 +7,17 @@ function App(props) {
         <div className="App">
             <PkQuery
                 pk={props.pk}
-                queryTemplates={{main: '{ processor packageVersion documents { sequences { blocks(withScopes:["chapter/%chapter%"]) { text } } } }'}}
+                queryTemplates={{main: '{\n' +
+                        '    processor\n' +
+                        '    packageVersion\n' +
+                        '    documents {\n' +
+                        '      sequences {\n' +
+                        '        blocks(withScopes:["chapter/%chapter%"]) {\n' +
+                        '          text(normalizeSpace:true)\n' +
+                        '        }\n' +
+                        '      }\n' +
+                        '    }\n' +
+                        '  }\n'}}
                 inputValues={{chapter: "2"}}
                 displayClass={PkDisplay}
                 showQuery={true}

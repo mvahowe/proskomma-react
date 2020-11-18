@@ -51,7 +51,9 @@ class PkDisplay extends Component {
                 {
                     (this.ready() && this.props.showQuery) ?
                         <div className="PkDisplay-queries">
-                            {<pre>{JSON.stringify(this.props.queryOutput.queries, null, 2)}</pre>}
+                            <pre>{"{\n"}
+                                {Object.entries(this.props.queryOutput.queries).map(kv => `  "${kv[0]}": "${kv[1].trim()}",\n`)}
+                                {"}"}</pre>
                         </div> :
                         ""
                 }
