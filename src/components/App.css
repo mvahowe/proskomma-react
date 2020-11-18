@@ -1,3 +1,41 @@
-.App {}
+.App {
+    padding: 10px
+}
 
-.App-header {}
+.heading {
+    padding-bottom: 30px;
+    font-size: xx-large;
+    font-weight: bold;
+    font-style: italic
+}
+
+.heading img {
+    padding-right: 10px
+}
+
+.PkForm {
+    padding-bottom: 20px
+}
+
+.formLabel {
+    display: inline-block;
+    width: 96px;
+    font-weight: bold;
+}
+
+.formTextInput {
+    background-color: #EEE
+}
+
+.PkDisplay-content {
+    font-size: x-large;
+    font-weight: bold
+}
+
+.PkDisplay {
+    font-size: x-small;
+}
+
+.PkDisplay-queryTime {
+    font-style: italic;
+}

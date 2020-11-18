@@ -15,8 +15,9 @@ class PkForm extends Component {
             <div className="PkForm">
                 {this.props.inputFields.map(f =>
                     <div key={count++}>
-                        <span><b>{f.label || f.name}</b></span>
+                        <span className="formLabel">{f.label || f.name}</span>
                         <input
+                            className={"formTextInput"}
                             name={f.name}
                             type="text"
                             value={this.props.fieldValues ? this.props.fieldValues[f.name]: ""}

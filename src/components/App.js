@@ -29,6 +29,10 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <div className="heading">
+                    <img src="favicon-96x96.png" alt="favicon"/>
+                    PROSKOMMA-REACT
+                </div>
                 <PkForm
                     inputFields={this.props.inputFields}
                     fieldValues={this.state.fieldValues}
