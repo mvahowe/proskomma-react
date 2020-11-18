@@ -5,7 +5,7 @@ class PkDisplay extends Component {
     content() {
         // Override this in subclass
         return <div className="PkDisplay-content">
-            <pre>PkDisplay Default Content</pre>
+            PkDisplay Default Content
         </div>
     }
 
@@ -27,14 +27,14 @@ class PkDisplay extends Component {
     failMessage() {
         // Override to change output on fail (but please handle failures)
         return <div className="PkDisplay-componentMessage">
-            <pre>{this.props.queryOutput.component.message}</pre>
+            {this.props.queryOutput.component.message}
         </div>;
     }
 
     loadingMessage() {
         // Override to change output while waiting for a query response
         return <div className="PkDisplay-componentMessage">
-            <pre>Loading...</pre>
+            Loading...
         </div>;
     }
 
@@ -51,23 +51,23 @@ class PkDisplay extends Component {
                 {
                     (this.ready() && this.props.showQuery) ?
                         <div className="PkDisplay-queries">
-                            <pre>{"{\n"}
+                            {"{\n"}
                                 {Object.entries(this.props.queryOutput.queries).map(kv => `  "${kv[0]}": "${kv[1].trim()}",\n`)}
-                                {"}"}</pre>
+                                {"}"}
                         </div> :
                         ""
                 }
                 {
                     (this.ready() && this.props.showTime) ?
                         <div className="PkDisplay-queryTime">
-                            <pre>Query Output in {this.props.queryOutput.component.queryTime} msec</pre>
+                            Query Output in {this.props.queryOutput.component.queryTime} msec
                         </div> :
                         ""
                 }
                 {
                     (this.ready() && this.props.showRawResults) ?
-                        <div className="PkDisplay-queryResults">
-                            <pre>{JSON.stringify(this.props.queryOutput.results, null, 2)}</pre>
+                        <div className="PkDisplay-rawResults">
+                            {JSON.stringify(this.props.queryOutput.results, null, 2)}
                         </div> :
                         ""
                 }

@@ -20,11 +20,19 @@
 .formLabel {
     display: inline-block;
     width: 96px;
+    text-align: right;
     font-weight: bold;
+    padding-right: 10px
 }
 
 .formTextInput {
     background-color: #EEE
+}
+
+.PkDisplay {
+    font-size: x-small;
+    font-family: monospace;
+    white-space: pre-wrap
 }
 
 .PkDisplay-content {
@@ -32,10 +40,11 @@
     font-weight: bold
 }
 
-.PkDisplay {
-    font-size: x-small;
+.PkDisplay-queryTime {
+    margin-top: 20px;
+    font-style: italic;
 }
 
-.PkDisplay-queryTime {
-    font-style: italic;
+.PkDisplay-rawResults, .PkDisplay-queries {
+    margin-top: 20px
 }
