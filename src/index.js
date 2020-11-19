@@ -23,6 +23,13 @@ ReactDOM.render(
                 label: "Chapter",
                 displayType: "text",
                 regex: "^[01][0-9]{0, 2}$",
+                initialValue: "3"
+            },
+            {
+                name: "verse",
+                label: "Verse",
+                displayType: "text",
+                regex: "^[01][0-9]{0, 2}$",
                 initialValue: "1"
             }
         ]}

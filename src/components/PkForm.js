@@ -13,7 +13,7 @@ class PkForm extends Component {
         return (
             <div className="PkForm">
                 {this.props.inputFields.map(f =>
-                    <div key={count++}>
+                    <div key={count++} className="PkFormRow">
                         <span className="formLabel">{f.label || f.name}</span>
                         <input
                             className={"formTextInput"}

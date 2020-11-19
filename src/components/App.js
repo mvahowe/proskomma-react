@@ -40,7 +40,7 @@ class App extends Component {
                             '    packageVersion\n' +
                             '    documents {\n' +
                             '      sequences {\n' +
-                            '        blocks(withScopes:["chapter/%chapter%"]) {\n' +
+                            '        blocks(withScopes:["chapter/%chapter%", "verse/%verse%"]) {\n' +
                             '          text(normalizeSpace:true)\n' +
                             '        }\n' +
                             '      }\n' +
