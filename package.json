@@ -1,7 +1,7 @@
 {
   "name": "proskomma-react",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "dependencies": {
     "@babel/preset-env": "^7.12.1",
     "deep-equal": "^2.0.4",
