@@ -17,13 +17,13 @@ module.exports = {
   serverPort: 6012,
   exampleMode: 'expand',
   usageMode: 'expand',
-  getComponentPathLine(componentPath) {
-    const componentName = componentPath.match(/(\w+)\/index.js/)[1];
-    return `import { ${componentName} } from '${name}';`;
-  },
+  // getComponentPathLine(componentPath) {
+  //   const componentName = componentPath.match(/(\w+)\/index.js/)[1];
+  //   return `import { ${componentName} } from '${name}';`;
+  // },
   webpackConfig: {
     //https://github.com/facebook/create-react-app/pull/8079#issuecomment-562373869
-    devServer: { port: 6010, transportMode: 'ws' },
+    devServer: { port: 6012, transportMode: 'ws' },
     devtool: 'source-map',
     module: {
       rules: [
