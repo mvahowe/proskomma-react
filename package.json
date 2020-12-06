@@ -1,6 +1,7 @@
 {
   "name": "proskomma-react",
   "version": "0.1.1",
+  "author": "RoyalSix",
   "private": false,
   "dependencies": {
     "@babel/preset-env": "^7.12.1",
@@ -11,10 +12,10 @@
     "xregexp": "^4.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "node_modules/babel-tape-runner/bin/babel-tape-runner test/code/*.js | node_modules/tap-summary/bin/cmd.js",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "start": "styleguidist server",
+    "build": "styleguidist build",
+    "prepublishOnly": "rm -fr ./dist & babel ./src --out-dir ./dist -s inline --extensions \".ts,.js\""
   },
   "eslintConfig": {
     "extends": [
@@ -39,7 +40,12 @@
     "babel-tape-runner": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",
     "react": "^17.0.1",
+    "react-styleguidist": "^11.1.5",
     "tap-summary": "^4.0.0",
-    "tape": "^5.0.1"
+    "tape": "^5.0.1",
+    "webpack": "^5.10.0"
+  },
+  "repository": {
+    "url": "https://github.com/RoyalSix/proskomma-react"
   }
 }

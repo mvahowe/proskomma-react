@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class PkDisplay extends Component {
-
     content() {
         // Override this in subclass
         return <div className="PkDisplay-content">
@@ -52,8 +51,8 @@ class PkDisplay extends Component {
                     (this.ready() && this.props.showQuery) ?
                         <div className="PkDisplay-queries">
                             {"{\n"}
-                                {Object.entries(this.props.queryOutput.queries).map(kv => `  "${kv[0]}": "${kv[1].trim()}",\n`)}
-                                {"}"}
+                            {Object.entries(this.props.queryOutput.queries).map(kv => `  "${kv[0]}": "${kv[1].trim()}",\n`)}
+                            {"}"}
                         </div> :
                         ""
                 }
