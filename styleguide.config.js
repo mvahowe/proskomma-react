@@ -6,11 +6,11 @@ const {
 } = require('./package.json');
 
 module.exports = {
-  title: `${upperFirst(camelCase(name))} v${version}`,
-  ribbon: {
-    url: repository.url,
-    text: 'View on GitHub',
-  },
+  // title: `${upperFirst(camelCase(name))} v${version}`,
+  // ribbon: {
+  //   url: repository.url,
+  //   text: 'View on GitHub',
+  // },
   moduleAliases: { 'proskomma-react': path.resolve(__dirname, 'src') },
   skipComponentsWithoutExample: true,
   ignore: ['**/helpers**', '**/styled**', '**/__tests__/**', '**/*.test.{js,jsx,ts,tsx}', '**/*.spec.{js,jsx,ts,tsx}', '**/*.d.ts'],
@@ -28,9 +28,9 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
+          loader: 'babel-loader'
         },
         {
           test: /\.css$/,

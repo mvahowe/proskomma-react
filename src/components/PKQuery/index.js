@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import deepEqual from 'deep-equal';
 
 class PkQuery extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -59,6 +58,7 @@ class PkQuery extends Component {
   }
 
   render() {
+    debugger;
     const DisplayClass = this.props.displayClass;
     if (this.props.fieldValues) {
       return (<DisplayClass

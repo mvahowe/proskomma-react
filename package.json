@@ -6,10 +6,13 @@
   "dependencies": {
     "@babel/preset-env": "^7.12.1",
     "deep-equal": "^2.0.4",
-    "proskomma": "^0.1.21",
+    "proskomma": "file:.yalc/proskomma",
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1",
-    "xregexp": "^4.3.0"
+    "xregexp": "4.4.0"
+  },
+  "peerDependencies": {
+    "xregexp": "^4.4.0"
   },
   "scripts": {
     "test": "jest",
@@ -35,9 +38,11 @@
     "babel-tape-runner": "^3.0.0",
     "buffer": "^6.0.3",
     "cheerio": "^1.0.0-rc.3",
+    "core-js": "^3.8.1",
     "css-loader": "^5.0.1",
     "react": "^17.0.1",
     "react-styleguidist": "^11.1.5",
+    "regenerator-runtime": "^0.13.7",
     "style-loader": "^2.0.0",
     "tap-summary": "^4.0.0",
     "tape": "^5.0.1",

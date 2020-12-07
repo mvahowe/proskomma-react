@@ -1,8 +1,9 @@
 
+import React, { Component } from 'react';
 import styled from "styled-components";
 import PkForm from "./PkForm";
 import PkQuery from "./PkQuery";
-import PkDisplay from "./";
+import PkDisplay from "./PKDisplay";
 import titUsfm from "../test_data/en_aligned_tit.usfm";
 import { ProsKomma } from "proskomma";
 const Container = styled.div`
