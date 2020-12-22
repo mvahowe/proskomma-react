@@ -58,7 +58,6 @@ class PkQuery extends Component {
   }
 
   render() {
-    debugger;
     const DisplayClass = this.props.displayClass;
     if (this.props.fieldValues) {
       return (<DisplayClass
