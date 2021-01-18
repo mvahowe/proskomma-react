@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "proskomma": {
-      "signature": "7cec6b9f6ca61c22b250bc1e43f2ce41",
-      "file": true
-    }
-  }
-}
